@@ -14,3 +14,62 @@
 .manage-hidden{margin-top:10px}.hidden-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.hidden-row>div{flex:1}.hidden-row strong{font-size:13px}.hidden-row small{display:block;color:var(--muted);font-size:11px;margin-top:5px}.hidden-row button{font-size:12px;flex-shrink:0}
 
 dialog.activity-detail{width:min(1120px,calc(100% - 40px));overflow:hidden}.activity-detail #detail-body{padding:0}.activity-detail .close{position:absolute;right:12px;top:12px;float:none;margin:0}.detail-tabs{display:none}.detail-layout{display:grid;grid-template-columns:1fr 1fr;height:min(790px,86dvh)}.detail-info{padding:30px;overflow:auto;min-width:0;overscroll-behavior:contain}.detail-posters{background:#e9e9de;border-left:1px solid var(--line);padding:24px;overflow:auto;min-width:0;overscroll-behavior:contain}.poster-heading{font-size:13px;font-weight:650;margin-bottom:14px;padding-right:36px}.poster-heading small{display:block;font-size:10px;font-weight:400;color:var(--muted);margin-top:5px}.detail-posters .poster{display:block;width:100%;height:auto;margin:0 0 16px;border-radius:3px;box-shadow:0 3px 12px #0001}.detail-posters>a{display:block;cursor:zoom-in}.activity-detail .detail-title{margin-right:0}.activity-detail .detail-actions{gap:6px}.activity-detail .detail-actions button,.activity-detail .detail-actions a{padding:9px 11px;font-size:11px}@media(max-width:700px){dialog.activity-detail{width:calc(100% - 16px);max-height:92dvh}.detail-tabs{display:flex;gap:8px;padding:12px 58px 10px 18px;border-bottom:1px solid var(--line)}.detail-tabs button{border:0;border-radius:20px;background:transparent;padding:7px 20px;font-size:12px}.detail-tabs button[aria-selected=true]{background:var(--green);color:white}.detail-layout{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;height:calc(88dvh - 58px);scrollbar-width:none}.detail-layout::-webkit-scrollbar{display:none}.detail-info,.detail-posters{flex:0 0 100%;width:100%;min-width:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow-y:auto;padding:22px 18px;overscroll-behavior-y:contain}.detail-posters{border:0}.poster-heading{padding:0}.activity-detail .close{top:12px;right:12px}.activity-detail .detail-title{font-size:22px}.activity-detail .detail-posters .poster{margin-bottom:14px}}
+
+/* Compact route control, shared by desktop and mobile. */
+#route-legend{right:60px;width:220px;padding:6px;display:flex;align-items:center;gap:4px;top:76px}
+#route-legend select{flex:1;min-width:0;border:0;background:transparent;font-size:12px;padding:9px 4px}
+#route-legend button{width:auto;flex-shrink:0;padding:9px 5px}
+.list-heading{justify-content:space-between}
+#mobile-tools{display:none}
+#filter-sheet{padding:0;width:min(520px,100%);max-height:90dvh}
+.filter-sheet-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.filter-sheet-head h2{font-size:18px;margin:0}
+.filter-sheet-head button{font-size:24px;border:0;padding:4px 12px}
+.filter-sheet-actions{display:flex;gap:12px;padding:12px 20px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--paper)}
+.filter-sheet-actions button{min-height:44px}
+#apply-filters{flex:1;background:var(--green);color:white;border-color:var(--green)}
+@media(max-width:700px){
+  body{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+  header{flex-shrink:0;min-height:0;padding:10px 12px 6px;gap:7px}
+  .brand-mark{width:32px;height:32px;font-size:23px}
+  .brand strong{font-size:19px}.brand small{font-size:8px}
+  nav button{min-height:40px;padding:8px;font-size:11px}
+  main{flex:1;min-height:0;height:auto;display:block;position:relative}
+  .map-stage{height:100%;min-height:0;border:0}
+  .sidebar{height:100%;overflow-y:auto;overscroll-behavior:contain}
+  body[data-mobile-view=map] .sidebar{display:none}
+  body[data-mobile-view=list] .map-stage{display:none}
+  .intro{padding:16px 20px 10px}.intro h1{font-size:23px;margin:0}
+  .intro .eyebrow,.intro p{display:none}
+  .map-toolbar{top:10px;left:10px;right:10px;gap:5px}
+  .map-toolbar button,.map-toolbar label{min-height:42px;font-size:11px;padding:8px;white-space:nowrap}
+  .map-toolbar button{flex:1}.map-toolbar label{padding:6px}
+  .leaflet-control-zoom{margin-top:116px!important}
+  #route-legend{top:62px;left:10px;right:auto;width:calc(100% - 64px);max-width:300px;padding:3px 7px;min-height:42px}
+  #route-legend select{font-size:14px;min-height:38px}
+  #route-legend button{min-height:38px;font-size:12px}
+  .map-key{bottom:26px;left:10px;max-width:calc(100% - 20px);padding:4px 8px;gap:9px}
+  .map-key button{min-height:36px;font-size:11px}
+  #mobile-tools{display:flex;flex-shrink:0;gap:6px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--paper)}
+  #mobile-tools button{flex:1;min-height:44px;border-radius:24px;background:transparent}
+  #mobile-tools button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  #mobile-filters{color:var(--green);font-weight:650}
+  #filter-sheet{margin:auto 0 0;width:100%;max-width:100%;border-radius:20px 20px 0 0;max-height:92dvh}
+  #filter-sheet[open]{display:flex;flex-direction:column}
+  #filter-sheet-body{overflow-y:auto;min-height:0;overscroll-behavior:contain}
+  #filter-sheet .filters{padding:16px 20px}
+  #filter-sheet input:not([type=checkbox]),#filter-sheet select{font-size:16px;min-height:44px}
+  #filter-sheet .search{min-height:48px}.search kbd{display:none}
+  #filter-sheet button{min-height:42px;font-size:12px}
+  #filter-sheet .check{min-height:40px;font-size:14px;margin:6px 0}
+  #filter-sheet input[type=checkbox]{width:20px;height:20px}
+  #filter-sheet .deadline{font-size:12px;margin-left:0;gap:7px}
+  #filter-sheet .deadline input{max-width:160px}
+  #filter-sheet .refine summary{font-size:14px;min-height:30px}
+  #filter-sheet .selects label{font-size:12px}
+  .list-heading select{font-size:13px;min-height:42px}.list-heading button{min-height:42px}
+  .section-head{padding-top:20px}.section-head h2{font-size:25px}
+  footer{padding-bottom:24px}
+  .activity-cluster-popup .leaflet-popup-content{width:min(270px,calc(100vw - 70px))!important}
+  .cluster-list{max-height:36dvh}
+}
