@@ -73,3 +73,53 @@ dialog.activity-detail{width:min(1120px,calc(100% - 40px));overflow:hidden}.acti
   .activity-cluster-popup .leaflet-popup-content{width:min(270px,calc(100vw - 70px))!important}
   .cluster-list{max-height:36dvh}
 }
+
+/* The same map supports activities and the numbered paper stamp booklet. */
+body{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+header{flex-shrink:0}
+main{flex:1;min-height:0;height:auto}
+.explore-mode{display:flex;justify-content:space-between;align-items:center;padding:7px 28px;border-bottom:1px solid var(--line);flex-shrink:0;gap:12px}
+.explore-mode>div{display:flex;gap:4px;padding:3px;background:#eae8dd;border-radius:24px}
+.explore-mode button{border:0;background:transparent;border-radius:22px;padding:7px 20px;font-size:12px;font-weight:650;min-height:34px}
+.explore-mode button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.explore-mode button[data-explore-mode=stamps][aria-pressed=true]{background:#873e61}
+.explore-mode small{font-weight:400;font-size:10px;margin-left:7px}
+.explore-mode>span{font-size:11px;color:var(--muted)}
+.stamp-intro{padding:24px 24px 12px}.stamp-intro .eyebrow{color:#873e61}
+.stamp-intro h1{font-size:30px;line-height:1.35;letter-spacing:-.8px;margin:12px 0 22px}
+.stamp-progress-line{display:flex;align-items:center;justify-content:space-between}
+.stamp-progress-line strong{font-size:15px;color:#873e61}
+.stamp-intro progress{display:block;width:100%;height:7px;border:0;border-radius:9px;overflow:hidden;accent-color:#9a446b;margin-top:8px;background:#e7e3da}
+.stamp-intro progress::-webkit-progress-bar{background:#e7e3da}.stamp-intro progress::-webkit-progress-value{background:#9a446b;border-radius:9px}
+.stamp-intro p{font-size:11px;line-height:1.7;color:var(--muted);margin:10px 0}
+.stamp-filters{padding:6px 24px 14px}.stamp-filters input,.stamp-filters select{font-size:14px}
+.stamp-filters .selects{margin-top:12px}
+.stamp-list-heading{display:flex;align-items:center;justify-content:space-between;margin:0 24px;padding:8px 0;border-bottom:1px solid var(--line);gap:8px;font-size:11px;color:var(--muted)}
+.stamp-list-heading button{font-size:11px;padding:5px 0}
+#stamp-results{padding:0 24px}
+.stamp-card{border-bottom:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.stamp-card-open{display:flex;align-items:flex-start;text-align:left;gap:12px;border:0;background:none;padding:0;min-width:0}
+.stamp-number{flex-shrink:0;display:grid;place-items:center;width:42px;height:42px;border:1.5px dashed #b8879e;border-radius:50%;color:#873e61;font-size:16px;font-weight:750;letter-spacing:1px}
+.stamp-card-copy{min-width:0}.stamp-card-copy strong{display:block;font-size:14px;line-height:1.5;margin:3px 0 5px;overflow-wrap:anywhere}
+.stamp-card-copy small{font-size:10px;color:#98667d}.stamp-card-copy>span{display:block;font-size:11px;line-height:1.7;color:var(--muted)}
+.stamp-check{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-width:48px;min-height:52px;cursor:pointer;color:var(--muted);font-size:10px}
+.stamp-check input{width:22px;height:22px;accent-color:var(--green);margin:0;cursor:pointer}
+.stamp-card.is-stamped .stamp-number{background:#e1eee7;border:1.5px solid var(--green);color:var(--green)}
+.stamp-card.is-stamped .stamp-check{color:var(--green)}
+.stamp-pin{position:relative;display:grid;place-items:center;width:36px;height:36px;background:#fffaf3;border:2px solid #9a446b;border-radius:10px;color:#873e61;box-shadow:0 2px 7px #3d263340;font-size:12px;font-weight:750}
+.stamp-pin b{position:absolute;right:-9px;top:-8px;border:2px solid white;border-radius:12px;min-width:20px;height:20px;display:grid;place-items:center;padding:0 3px;background:#9a446b;color:white;font-size:9px}
+.stamp-pin.is-stamped{color:var(--green);border-color:var(--green);background:#e4f0e8}.stamp-pin.is-stamped b{background:var(--green)}
+.stamp-inline-number{display:inline-block!important;margin:0 7px 0 0!important;color:#873e61!important;font-weight:700;font-size:12px!important}
+.stamp-related{display:grid;gap:0}.stamp-related button{border-radius:0;border:0;border-bottom:1px solid var(--line);padding:12px 0;text-align:left;background:none}.stamp-related strong,.stamp-related small{display:block}
+@media(max-width:700px){
+ .explore-mode{padding:5px 12px}.explore-mode>span{display:none}.explore-mode>div{width:100%;padding:2px}.explore-mode button{flex:1;padding:6px 12px;min-height:32px}
+ .stamp-intro{padding:18px 20px 4px}.stamp-intro h1{font-size:23px;margin:8px 0 14px}.stamp-intro h1 br{display:none}
+ .stamp-filters{padding:16px 20px}.stamp-filters input,.stamp-filters select{font-size:16px;min-height:44px}
+ .stamp-list-heading{margin:0 20px}#stamp-results{padding:0 20px}.stamp-card{padding:14px 0}
+ .stamp-card-copy strong{font-size:14px}.stamp-check{min-height:52px}.stamp-card-open{gap:10px}.stamp-number{width:38px;height:38px;font-size:15px}
+ #stamp-key{display:inline-flex!important}
+ body:not(.stamp-mode) #stamp-key{display:none!important}
+}
+/* A failed basemap must never block interaction with the working point layer. */
+#map-error{pointer-events:none}
+.map-stage:has(.leaflet-popup) #map-error{display:none}
