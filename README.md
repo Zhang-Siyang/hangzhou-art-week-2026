@@ -36,11 +36,17 @@ python3 -m http.server 8765 --directory dist
 - `tests/`：地图弹窗、日期筛选与集章功能的浏览器回归测试。
 - `dist/assets/`：活动海报、站点图片与 Leaflet。
 
-修改后直接发布 `dist` 目录。Cloudflare Pages 无需构建命令，输出目录为 `dist`。现有站点使用 Direct Upload；更新时上传 `dist` 内容或通过 Wrangler 部署：
+## 自动发布
 
-```sh
-npx wrangler pages deploy dist --project-name hangzhou-art-week-2026
-```
+现有站点已连接 [Cloudflare Pages 原生 GitHub 集成](https://developers.cloudflare.com/pages/get-started/git-integration/)，保留原来的网址。
+
+- GitHub 仓库：`Zhang-Siyang/hangzhou-art-week-2026`。
+- 生产分支：`main`，推送提交后自动部署。
+- 框架预设：`None`；构建命令留空；仓库根目录运行，发布目录为 `dist`。
+- 构建监听所有路径，文档变更也会触发部署。
+- Cloudflare GitHub App 仅授权此仓库，无需额外的 GitHub Actions 工作流或 Cloudflare API 密钥。
+
+修改后提交并推送到 `main` 即可；构建状态和历史版本在 Cloudflare Pages 的 **Deployments** 中查看。仅修改本地文件不会触发发布。
 
 ## 数据说明
 
